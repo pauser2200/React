@@ -21,6 +21,7 @@ class App extends React.Component {
         );
     }
 
+
     render() {
 
         if(this.state.erroMessage && !this.state.lat){
