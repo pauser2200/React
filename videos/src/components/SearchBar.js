@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 class SearchBar extends React.Component {
 
     state = {term: ''};
@@ -10,6 +9,7 @@ class SearchBar extends React.Component {
 
     onFormSubmit = (event) => {
         event.preventDefault();
+        this.props.onFormSubmit(this.state.term);
     };
 
     render() {
