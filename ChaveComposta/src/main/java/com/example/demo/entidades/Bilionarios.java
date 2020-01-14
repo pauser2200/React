@@ -6,10 +6,10 @@ import lombok.ToString;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "BILIONARIOS")
 @Data
 @ToString
+@Entity
+@Table(name = "BILIONARIOS")
 public class Bilionarios {
 
     @Id

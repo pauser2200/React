@@ -11,4 +11,6 @@ public interface BilionariosSemValidacaoRepository extends JpaRepository<Biliona
 
     @Query(value = "FROM BilionariosSemValidacao BSV WHERE BSV.pk.bilionarios.id=?1")
     BilionariosSemValidacao buscarPorId(Integer id);
+
+    BilionariosSemValidacao findByPkBilionariosId(Integer id);
 }

@@ -5,11 +5,12 @@ import lombok.ToString;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "BILIONARIOS_SEM_VALID")
 @Data
 @ToString
+@Entity
+@Table(name = "BILIONARIOS_SEM_VALID")
 public class BilionariosSemValidacao {
+
     @EmbeddedId
     BilionariosSemValidacaoPK pk;
 }

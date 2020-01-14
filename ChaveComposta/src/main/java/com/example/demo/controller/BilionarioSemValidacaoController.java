@@ -18,10 +18,10 @@ public class BilionarioSemValidacaoController {
 
     @GetMapping(value = "/{id}")
     public BilionariosSemValidacao getBilionariosSemValidacao(@PathVariable int id) {
-        return findBookById(id);
+        return findBilionariosSemValidById(id);
     }
 
-    private BilionariosSemValidacao findBookById(int id) {
-        return repository.buscarPorId(id);
+    private BilionariosSemValidacao findBilionariosSemValidById(int id) {
+        return repository.findByPkBilionariosId(id);
     }
 }
