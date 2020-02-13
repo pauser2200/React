@@ -2,7 +2,7 @@ import React from 'react'
 import Grid from  '../template/grid'
 import {connect} from 'react-redux'
 import { bindActionCreators } from 'redux'
-import {changeDescription, search} from './todoActions'
+import {add, changeDescription, search, clear} from './todoActions'
 
 import IconButton from  '../template/iconButton'
 
@@ -19,31 +19,32 @@ class TodoForm extends React.Component {
     }
 
     keyHandler(e) {
-
+        const { add, search, description, clear} = this.props
         if (e.key === 'Enter'){
-            e.shiftKey ? props.handleSearch() : props.handleAdd()
+            e.shiftKey ? search(description) : add(description)
         } else if (e.key === 'Escape') {
-            props.handleClear()
+            clear()
         }
     }
 
     render() {
+        const { add, search, description, clear } = this.props
         return (
             <div>
                 <div role='form' className='todoForm'>
 
                     <Grid cols='12 9 10'>
                         <input id='description' className='form-control' placeholder='Adcione uma tarefa'
-                               value={this.props.description}
+                               value={description}
                                onChange={this.props.changeDescription}
                                onKeyUp={this.keyHandler}
                         />
                     </Grid>
 
                     <Grid cols='12 3 2'>
-                        <IconButton style='primary' onClick={this.props.handleAdd} icon='plus'/>
-                        <IconButton style='info'    onClick={this.props.handleSearch} icon='search'/>
-                        <IconButton style='default' onClick={this.props.handleClear} icon='close'/>
+                        <IconButton style='primary' onClick={ () => add(description)} icon='plus'/>
+                        <IconButton style='info'    onClick={search} icon='search'/>
+                        <IconButton style='default' onClick={clear} icon='close'/>
                     </Grid>
                 </div>
             </div>
@@ -53,7 +54,7 @@ class TodoForm extends React.Component {
 
 
 const mapStateToProps = state => ({description: state.todo.description});
-const mapDispatchToProps = dispatch => bindActionCreators({ changeDescription, search}, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({ add, changeDescription, search, clear}, dispatch);
 export default  connect(mapStateToProps, mapDispatchToProps)(TodoForm)
 
 
